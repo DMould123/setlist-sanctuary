@@ -33,7 +33,7 @@ const Navbar = ({ onMenuToggle }) => {
     <header className="header">
       <nav className="nav">
         <NavLink to="/" className="nav__logo">
-        Setlist Sanctuary
+        <img src="/src/assets/logo.png" alt="Setlist Sanctuary Logo" className="nav__logo-img" />
         </NavLink>
 
         {/* Toggle Button */}

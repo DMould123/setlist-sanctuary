@@ -134,9 +134,22 @@ button:hover {
 }
 
 .nav__logo {
-  color: var(--accent-color);
-  font-size: 20px;
+  display: flex;
+  align-items: center;
   text-decoration: none;
+}
+
+.nav__logo-img {
+  height: 40px; /* Adjust this value to fit your navbar height */
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__logo-img {
+    height: 30px; /* Smaller logo for mobile devices */
+  }
 }
 
 .nav__toggle {
