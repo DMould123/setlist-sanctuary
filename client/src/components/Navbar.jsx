@@ -4,19 +4,20 @@ import { IoClose, IoMenu } from 'react-icons/io5'
 import { UserContext } from '../../context/userContext'
 import axios from 'axios'
 
-const Navbar = () => {
+const Navbar = ({ onMenuToggle }) => {
   const [showMenu, setShowMenu] = useState(false)
   const { user, setUser } = useContext(UserContext)
 
   const toggleMenu = () => {
-    setShowMenu(!showMenu)
+    const newMenuState = !showMenu;
+    setShowMenu(newMenuState);
+    onMenuToggle(newMenuState);
   }
 
-  const closeMenuOnMobile = () => {
-    if (window.innerWidth <= 1150) {
-      setShowMenu(false)
-    }
-  }
+  const closeMenu = () => {
+    setShowMenu(false);
+    onMenuToggle(false);
+  };
 
   const handleLogout = async () => {
     try {
@@ -32,7 +33,7 @@ const Navbar = () => {
     <header className="header">
       <nav className="nav">
         <NavLink to="/" className="nav__logo">
-          Concert Archive
+        Setlist Sanctuary
         </NavLink>
 
         {/* Toggle Button */}
@@ -47,7 +48,7 @@ const Navbar = () => {
               <NavLink
                 to="/about"
                 className="nav__link"
-                onClick={closeMenuOnMobile}
+                onClick={closeMenu}
               >
                 About
               </NavLink>
@@ -56,7 +57,7 @@ const Navbar = () => {
               <NavLink
                 to="/contact"
                 className="nav__link"
-                onClick={closeMenuOnMobile}
+                onClick={closeMenu}
               >
                 Contact
               </NavLink>
@@ -66,7 +67,10 @@ const Navbar = () => {
                 <NavLink
                   to="/"
                   className="nav__link nav__logout-btn"
-                  onClick={handleLogout}
+                  onClick={() => {
+                    closeMenu();
+                    handleLogout();
+                  }}
                 >
                   Logout
                 </NavLink>
@@ -77,7 +81,7 @@ const Navbar = () => {
                   <NavLink
                     to="/"
                     className="nav__link"
-                    onClick={closeMenuOnMobile}
+                    onClick={closeMenu}
                   >
                     Login
                   </NavLink>
@@ -86,7 +90,7 @@ const Navbar = () => {
                   <NavLink
                     to="/register"
                     className="nav__link"
-                    onClick={closeMenuOnMobile}
+                    onClick={closeMenu}
                   >
                     Register
                   </NavLink>

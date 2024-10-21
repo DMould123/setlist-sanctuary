@@ -229,6 +229,88 @@ button:hover {
   .nav__list:last-child .nav__item {
     margin-top: auto;
   }
+
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .sidebar-toggle {
+    left: 10px;
+  }
+
+  .sidebar-toggle.open {
+    left: 260px;
+  }
+
+  .sidebar {
+    width: 250px;
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    padding: 20px;
+    height: calc(100vh - 60px);
+    position: fixed;
+    left: 0;
+    top: 60px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.closed {
+    transform: translateX(-250px);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    position: fixed;
+    left: 10px;
+    top: 70px;
+    z-index: 1001;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar-toggle.open {
+    left: 260px;
+  }
+
+  .sidebar-toggle:hover {
+    background-color: #1ED760;
+  }
+
+  .sidebar-toggle.hidden,
+  .sidebar.hidden {
+    display: none;
+  }
+
+  .dashboard-content {
+    margin-left: 0;
+    padding-top: 60px;
+  }
+
+  .nav__menu {
+    background-color: var(--secondary-color);
+  }
+
+  .nav__link,
+  .nav__logout-btn {
+    color: var(--accent-color);
+  }
 }
 
 /* Media Queries for Responsive Login/Register Pages */
@@ -262,4 +344,117 @@ button:hover {
   .logo {
     width: 100px;
   }
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  padding-top: 60px; /* Add this to account for the fixed header */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
+  padding: 20px;
+  height: calc(100vh - 60px);
+  position: fixed;
+  left: 0;
+  top: 60px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.closed {
+  transform: translateX(-250px);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-toggle {
+  position: fixed;
+  left: 10px;
+  top: 70px;
+  z-index: 1001;
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle.open {
+  left: 260px;
+}
+
+.sidebar-toggle:hover {
+  background-color: #1ED760;
+}
+
+.sidebar-toggle.hidden,
+.sidebar.hidden {
+  display: none;
+}
+
+.sidebar-nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 15px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.sidebar-link:hover {
+  color: var(--primary-color);
+}
+
+.sidebar-link svg {
+  margin-right: 10px;
+}
+
+.dashboard-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: var(--background-color);
+  margin-left: 250px; /* Add this to push content to the right of sidebar */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.dashboard-content.sidebar-closed {
+  margin-left: 0;
+}
+
+.sidebar.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 1150px) {
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .sidebar-toggle.hidden {
+    display: none;
+  }
+}
+
+.sidebar-toggle.hidden {
+  display: none;
 }
